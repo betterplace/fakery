@@ -14,6 +14,6 @@ module Fakery
   class << self
     extend Forwardable
 
-    def_delegators :'Fakery::Registry', :seed, :register, :registered_stubs, :build
+    def_delegators :'Fakery::Registry', :seed, :register, :registered?, :build
   end
 end

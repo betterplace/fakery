@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Fakery::Change do
-  it 'raises foo if arguments are missing' do
+  it 'raises ArgumentError if arguments are missing' do
     expect { Fakery::Change.new }.to raise_error ArgumentError
   end
 
@@ -31,7 +31,7 @@ describe Fakery::Change do
       change.to_s.should eq change.inspect
     end
 
-    it 'supports addition changes of fields' do
+    it 'supports changes of fields' do
       change.from.should be_nil
       change.to.should eq 23
       change.should be_added
