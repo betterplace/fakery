@@ -5,13 +5,13 @@ require 'typhoeus'
 require 'forwardable'
 
 module Fakery
+  require 'fakery/version'
   require 'fakery/fakery_error'
   require 'fakery/api_error'
   require 'fakery/api'
   require 'fakery/change'
   require 'fakery/fake'
   require 'fakery/registry'
-  require 'fakery/version'
 
   class << self
     extend Forwardable
