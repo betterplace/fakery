@@ -42,15 +42,15 @@ class Fakery::Fake < JSON::GenericObject
     to_hash
   end
 
-  def fakery_http_response(type: :typhoeus, http_status: 200)
+  private
+
+  attr_reader :changes
+
+  def http_response(type: :typhoeus, http_status: 200)
     ::Typhoeus::Response.new(code: http_status, body: JSON(self)).tap do |r|
       r.ask_and_send(:mock=, true)
     end
   end
-
-  private
-
-  attr_reader :changes
 
   def seed!
     myself = self

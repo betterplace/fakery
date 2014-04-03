@@ -59,13 +59,13 @@ describe Fakery::Fake do
 
   context Typhoeus do
     it 'returns a successful http response object' do
-      response = fake.fakery_http_response
+      response = Fakery.http_response(fake)
       response.should be_success
       JSON(response.body)['name'].should eq fake.name
     end
 
     it 'returns an unsuccessful http response object' do
-      response = fake.fakery_http_response(http_status: 500)
+      response = Fakery.http_response(fake, http_status: 500)
       response.should_not be_success
       JSON(response.body)['name'].should eq fake.name
     end

@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.date = "2014-04-03"
   s.description = "This library fakes ruby objects from JSON API responses for testing purposes."
   s.email = "developers@betterplace.org"
-  s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/version.rb"]
-  s.files = [".gitignore", ".rspec", ".travis.yml", "Gemfile", "LICENSE", "README.md", "Rakefile", "TODO.md", "VERSION", "fakery.gemspec", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/version.rb", "spec/api_spec.rb", "spec/change_spec.rb", "spec/fake_spec.rb", "spec/registry_spec.rb", "spec/spec_helper.rb"]
+  s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb"]
+  s.files = [".gitignore", ".rspec", ".travis.yml", "Gemfile", "LICENSE", "README.md", "Rakefile", "TODO.md", "VERSION", "fakery.gemspec", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb", "spec/api_spec.rb", "spec/change_spec.rb", "spec/fake_spec.rb", "spec/registry_spec.rb", "spec/spec_helper.rb"]
   s.homepage = "http://github.com/betterplace/fakery"
   s.rdoc_options = ["--title", "Fakery -- ", "--main", "README.md"]
   s.rubygems_version = "2.2.2"

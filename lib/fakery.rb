@@ -12,11 +12,21 @@ module Fakery
   require 'fakery/change'
   require 'fakery/fake'
   require 'fakery/registry'
+  require 'fakery/seeding'
+  require 'fakery/wrapping'
 
   class << self
     extend Forwardable
 
-    def_delegators :'Fakery::Registry', :seed, :register, :registered?,
-      :build, :source, :reseed
+    def cast(fake)
+      Fakery::Fake === fake ? fake : build(fake)
+    end
+
+    def_delegators :'Fakery::Registry', :register, :registered?, :build,
+      :source
+
+    def_delegators :'Fakery::Seeding', :seed, :reseed
+
+    def_delegators :'Fakery::Wrapping', :http_response
   end
 end
