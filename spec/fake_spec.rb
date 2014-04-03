@@ -11,10 +11,10 @@ describe Fakery::Fake do
   context Fakery::Change do
     it 'records regular changes' do
       obj = Fakery.build(:foo)
-      obj.__changes__.should be_empty
+      obj.__send__(:changes).should be_empty
       obj.name = 'bar'
-      obj.__changes__.should have(1).entry
-      change = obj.__changes__.first
+      obj.__send__(:changes).should have(1).entry
+      change = obj.__send__(:changes).first
       change.name.should eq :name
       change.from.should eq 'foo'
       change.to.should eq 'bar'
@@ -23,10 +23,10 @@ describe Fakery::Fake do
 
     it 'records addition changes' do
       obj = Fakery.build(:foo)
-      obj.__changes__.should be_empty
+      obj.__send__(:changes).should be_empty
       obj.change = true
-      obj.__changes__.should have(1).entry
-      change = obj.__changes__.first
+      obj.__send__(:changes).should have(1).entry
+      change = obj.__send__(:changes).first
       change.name.should eq :change
       change.from.should be_nil
       change.to.should eq true
@@ -35,11 +35,11 @@ describe Fakery::Fake do
 
     it 'can ignore changes' do
       obj = Fakery.build(:foo)
-      obj.__changes__.should be_empty
+      obj.__send__(:changes).should be_empty
       Fakery::Fake.ignore_changes do
         obj.change = true
       end
-      obj.__changes__.should be_empty
+      obj.__send__(:changes).should be_empty
     end
   end
 

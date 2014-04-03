@@ -38,9 +38,8 @@ class Fakery::Fake < JSON::GenericObject
     @changes = Set[]
   end
 
-  def __changes__
-    @changes
-  end
+  attr_reader :changes
+  private     :changes
 
   def seed!
     myself = self
@@ -86,23 +85,26 @@ EOT
     to_hash
   end
 
+  private def record_change(name, new_value)
+    old_value = self[name]
+    if old_value != new_value
+      @changes << Fakery::Change.new(
+        name:  name,
+        from:  old_value,
+        to:    new_value,
+        added: !table.key?(name)
+      )
+    end
+    self
+  end
+
   def method_missing(id, *args, &block)
     if id =~ /=\z/
       args.size > 1 and
         raise ArgumentError, "wrong number of arguments (#{len} for 1)", caller(1)
       name  = $`.to_sym
       value = args.first
-      unless self.class.ignore_changes?
-        old_value = self[name]
-        if old_value != value
-          @changes << Fakery::Change.new(
-            name:  name,
-            from:  old_value,
-            to:    value,
-            added: !table.key?(name)
-          )
-        end
-      end
+      self.class.ignore_changes? or record_change(name, value)
       modifiable[name] = value
     else
       super
