@@ -37,6 +37,7 @@ class Fakery::Change
       end
     end
 
+    # Record the change to +new_value+ for the field +name+.
     def record_change(name, new_value)
       old_value = self[name]
       if old_value != new_value
@@ -51,10 +52,12 @@ class Fakery::Change
     end
 
     module ClassMethods
+      # Return true iff in ignoring changes mode.
       def ignore_changes?
         ignore_changesp
       end
 
+      # Ignore the changes during execution of the yielded block.
       def ignore_changes
         old, self.ignore_changesp = ignore_changesp, true
         yield
