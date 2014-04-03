@@ -27,6 +27,6 @@ module Fakery
 
     def_delegators :'Fakery::Seeding', :seed, :reseed
 
-    def_delegators :'Fakery::Wrapping', :http_response
+    def_delegators :'Fakery::Wrapping', :http_response, :instance
   end
 end

@@ -57,41 +57,6 @@ describe Fakery::Fake do
     fake.name.should eq 'foo'
   end
 
-  context Typhoeus do
-    it 'returns a successful http response object' do
-      response = Fakery.http_response(fake)
-      response.should be_success
-      JSON(response.body)['name'].should eq fake.name
-    end
-
-    it 'returns an unsuccessful http response object' do
-      response = Fakery.http_response(fake, http_status: 500)
-      response.should_not be_success
-      JSON(response.body)['name'].should eq fake.name
-    end
-
-    it 'can be seeded from an URL' do
-      url = 'http://api.some.where/foo.json'
-      another_fake = fake.dup
-      another_fake.name = 'bar'
-      Fakery::Api.should_receive(:get).and_return(another_fake)
-      fake = Fakery.seed url
-      fake.name.should eq another_fake.name
-      fake.__api_seed_url__.should eq url
-    end
-
-    it 'can be reseeded from an URL' do
-      url = 'http://api.some.where/foo.json'
-      another_fake = fake.dup
-      another_fake.name = 'bar'
-      fake.__api_seed_url__ = url
-      Fakery::Api.should_receive(:get).and_return(another_fake)
-      Fakery.reseed(fake)
-      fake.name.should eq another_fake.name
-      fake.__api_seed_url__.should eq url
-    end
-  end
-
   it 'can output ruby code for registration in the Fake::Registry' do
     string = Fakery.source(:my_name, fake)
     string.should be_a String

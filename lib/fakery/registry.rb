@@ -5,6 +5,7 @@ module Fakery::Registry
     @registered_fakes ||= {}
   end
 
+  # Clear all registered fakes.
   def clear
     registered_fakes.clear
   end
@@ -41,8 +42,9 @@ module Fakery::Registry
     raise ArgumentError, "no fake registered under the name #{register_name.inspect}"
   end
 
-  # TODO
+  # Returns the ruby source to register +fake+ under the +name+.
   def source(name, fake)
+    fake = Fakery.cast(fake)
     fake.__send__(:register_as_ruby, name)
   end
 end

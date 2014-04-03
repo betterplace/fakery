@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe Fakery::Registry do
-  after :each do
-    Fakery::Registry.clear
-  end
-
   let :fake do
     Fakery::Fake.from_hash(name: 'foo')
   end
