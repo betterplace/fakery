@@ -15,11 +15,13 @@ class Fakery::Fake < JSON::GenericObject
       self.ignore_changesp = old
     end
 
+    def from_hash(*a, &b)
+      ignore_changes { super }
+    end
+
     def from_json(json)
       json.respond_to?(:read) and json = json.read
-      ignore_changes do
-        from_hash(JSON.parse(json))
-      end
+      from_hash JSON.parse(json)
     end
 
     def seed_from_url(api_seed_url)

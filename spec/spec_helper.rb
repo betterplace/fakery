@@ -25,6 +25,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     Typhoeus::Expectation.clear
+    Fakery::Registry.clear
   end
 end
-
