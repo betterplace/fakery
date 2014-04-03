@@ -1,6 +1,7 @@
 require 'set'
 require 'tins'
 require 'json'
+require 'typhoeus'
 
 module Fakery
   require 'fakery/api'

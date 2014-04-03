@@ -51,7 +51,13 @@ class Fakery::Fake < JSON::GenericObject
     myself
   end
 
-  def initialize_copy(other)
+  def http_response(type: :typhoeus, http_status: 200)
+    ::Typhoeus::Response.new(code: http_status, body: JSON(self)).tap do |r|
+      r.ask_and_send(:mock=, true)
+    end
+  end
+
+  private def initialize_copy(other)
     other.instance_variable_set :@changes, @changes.dup
     super
   end

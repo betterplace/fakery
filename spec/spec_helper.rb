@@ -15,4 +15,16 @@ if ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start
 end
 require 'rspec'
+require 'byebug'
 require 'fakery'
+
+RSpec.configure do |config|
+  config.before(:each) do
+    Typhoeus::Config.block_connection = true
+  end
+
+  config.after(:each) do
+    Typhoeus::Expectation.clear
+  end
+end
+
