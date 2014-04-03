@@ -25,8 +25,7 @@ module Fakery::Registry
     if registered?(register_name)
       warn "WARNING: Overwriting a fake for an already registered name #{register_name.inspect}."
     end
-    registered_fakes[register_name] =
-      Fakery::Fake === fake ? fake : Fakery::Fake.from_json(fake)
+    registered_fakes[register_name] = Fakery::Fake.cast(fake)
   end
 
   # Builds a the fake registered under the name +register_name+. All its fields

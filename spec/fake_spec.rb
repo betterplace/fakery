@@ -49,14 +49,6 @@ describe Fakery::Fake do
     fake.name.should eq 'foo'
   end
 
-  it 'can be generated from a file containing JSON text' do
-    io = StringIO.new << '{ "name": "foo" }'
-    io.rewind
-    fake = Fakery::Fake.from_json io
-    fake.should be_a Fakery::Fake
-    fake.name.should eq 'foo'
-  end
-
   it 'can output ruby code for registration in the Fake::Registry' do
     string = Fakery.source(:my_name, fake)
     string.should be_a String
@@ -90,6 +82,13 @@ describe Fakery::Fake do
       casted = Fakery::Fake.cast('{ "name": "foo" }')
       casted.should be_a Fakery::Fake
       casted.name.should eq 'foo'
+    end
+
+    it 'casts from a file containing json text to a fake' do
+      io = StringIO.new << '{ "name": "foo" }'
+      fake = Fakery::Fake.cast(io.tap(&:rewind))
+      fake.should be_a Fakery::Fake
+      fake.name.should eq 'foo'
     end
 
     it 'raises an ArgumentError if it cannot cast' do

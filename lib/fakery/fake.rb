@@ -10,6 +10,8 @@ class Fakery::Fake < JSON::GenericObject
         Fakery.build(fake)
       when fake.respond_to?(:to_hash)
         from_hash(fake.to_hash)
+      when fake.respond_to?(:read)
+        cast(fake.read)
       when fake.respond_to?(:to_str)
         from_json(fake.to_str)
       else
@@ -22,8 +24,7 @@ class Fakery::Fake < JSON::GenericObject
     end
 
     def from_json(json)
-      json.respond_to?(:read) and json = json.read
-      from_hash JSON.parse(json)
+       JSON.parse(json, object_class: self)
     end
 
     def seed_from_url(api_seed_url)
