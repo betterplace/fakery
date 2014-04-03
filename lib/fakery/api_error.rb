@@ -1,4 +1,4 @@
-class Fakery::ApiError
+class Fakery::ApiError < Fakery::FakeryError
   def initialize(*args, **opts)
     super(*args)
     @response = opts[:response]

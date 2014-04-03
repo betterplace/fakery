@@ -42,7 +42,7 @@ class Fakery::Fake < JSON::GenericObject
 
   def seed!
     myself = self
-    self.class.from_hash(Api.get(__api_seed_url__)).instance_eval do
+    self.class.from_hash(Fakery::Api.get(__api_seed_url__)).instance_eval do
       self.__api_seed_url__ = myself.__api_seed_url__
       for (name, value) in table
         myself[name] = value

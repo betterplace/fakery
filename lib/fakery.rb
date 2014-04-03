@@ -2,13 +2,14 @@ require 'set'
 require 'tins'
 require 'json'
 require 'typhoeus'
+require 'forwardable'
 
 module Fakery
-  require 'fakery/api'
+  require 'fakery/fakery_error'
   require 'fakery/api_error'
+  require 'fakery/api'
   require 'fakery/change'
   require 'fakery/fake'
-  require 'fakery/fakery_error'
   require 'fakery/registry'
   require 'fakery/version'
 
