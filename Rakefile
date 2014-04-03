@@ -10,7 +10,8 @@ GemHadar do
   summary     'Fake Ruby objects from JSON API responses'
   description "This library fakes ruby objects from JSON API responses for testing purposes."
   test_dir    'spec'
-  ignore      '.*.sw[pon]', 'pkg', 'Gemfile.lock', 'coverage', '.rvmrc', '.ruby-version', '.AppleDouble', 'tags', '.DS_Store', '.utilsrc'
+  ignore      '.*.sw[pon]', 'pkg', 'Gemfile.lock', 'coverage', '.rvmrc',
+    '.ruby-version', '.AppleDouble', 'tags', '.DS_Store', '.utilsrc', 'doc'
   readme      'README.md'
   title       "#{name.camelize} -- "
 

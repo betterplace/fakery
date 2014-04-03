@@ -9,6 +9,6 @@ module Fakery::Seeding
   # TODO
   def reseed(fake, url = nil)
     url and fake.__api_seed_url__ = url
-    fake.__send__(:seed!)
+    fake.__send__(:reseed)
   end
 end

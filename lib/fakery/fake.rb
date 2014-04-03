@@ -1,9 +1,7 @@
 class Fakery::Fake < JSON::GenericObject
-  class << self
-    extend Tins::ThreadLocal
-    thread_local :ignore_changesp
-    extend Tins::Delegate
+  include Fakery::Change::Support
 
+  class << self
     def cast(fake)
       case
       when self === fake
@@ -19,17 +17,6 @@ class Fakery::Fake < JSON::GenericObject
       end
     end
 
-    def ignore_changes?
-      ignore_changesp
-    end
-
-    def ignore_changes
-      old, self.ignore_changesp = ignore_changesp, true
-      yield
-    ensure
-      self.ignore_changesp = old
-    end
-
     def from_hash(*a, &b)
       ignore_changes { super }
     end
@@ -43,7 +30,7 @@ class Fakery::Fake < JSON::GenericObject
       ignore_changes do
         new.tap do |obj|
           obj.__api_seed_url__ = api_seed_url
-        end.__send__(:seed!)
+        end.__send__(:reseed)
       end
     end
   end
@@ -67,7 +54,7 @@ class Fakery::Fake < JSON::GenericObject
     end
   end
 
-  def seed!
+  def reseed
     myself = self
     self.class.from_hash(Fakery::Api.get(__api_seed_url__)).instance_eval do
       self.__api_seed_url__ = myself.__api_seed_url__
@@ -99,19 +86,6 @@ EOT
       define_singleton_method(name) { @table[name] }
     end
     name
-  end
-
-  def record_change(name, new_value)
-    old_value = self[name]
-    if old_value != new_value
-      @changes << Fakery::Change.new(
-        name:  name,
-        from:  old_value,
-        to:    new_value,
-        added: !table.key?(name)
-      )
-    end
-    self
   end
 
   def method_missing(id, *args, &block)

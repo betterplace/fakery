@@ -26,4 +26,41 @@ class Fakery::Change
   end
 
   alias inspect to_s
+
+  module Support
+    extend Tins::Concern
+
+    included do
+      singleton_class.class_eval do
+        extend Tins::ThreadLocal
+        thread_local :ignore_changesp
+      end
+    end
+
+    def record_change(name, new_value)
+      old_value = self[name]
+      if old_value != new_value
+        @changes << Fakery::Change.new(
+          name:  name,
+          from:  old_value,
+          to:    new_value,
+          added: !table.key?(name)
+        )
+      end
+      self
+    end
+
+    module ClassMethods
+      def ignore_changes?
+        ignore_changesp
+      end
+
+      def ignore_changes
+        old, self.ignore_changesp = ignore_changesp, true
+        yield
+      ensure
+        self.ignore_changesp = old
+      end
+    end
+  end
 end

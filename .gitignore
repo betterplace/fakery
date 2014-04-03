@@ -6,5 +6,6 @@
 .utilsrc
 Gemfile.lock
 coverage
+doc
 pkg
 tags
