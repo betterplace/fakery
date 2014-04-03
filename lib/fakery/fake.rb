@@ -28,7 +28,7 @@ class Fakery::Fake < JSON::GenericObject
       ignore_changes do
         new.tap do |obj|
           obj.__api_seed_url__ = api_seed_url
-        end.seed!
+        end.__send__(:seed!)
       end
     end
   end
@@ -38,8 +38,19 @@ class Fakery::Fake < JSON::GenericObject
     @changes = Set[]
   end
 
+  def as_json(*)
+    to_hash
+  end
+
+  def fakery_http_response(type: :typhoeus, http_status: 200)
+    ::Typhoeus::Response.new(code: http_status, body: JSON(self)).tap do |r|
+      r.ask_and_send(:mock=, true)
+    end
+  end
+
+  private
+
   attr_reader :changes
-  private     :changes
 
   def seed!
     myself = self
@@ -52,17 +63,6 @@ class Fakery::Fake < JSON::GenericObject
     myself
   end
 
-  def http_response(type: :typhoeus, http_status: 200)
-    ::Typhoeus::Response.new(code: http_status, body: JSON(self)).tap do |r|
-      r.ask_and_send(:mock=, true)
-    end
-  end
-
-  private def initialize_copy(other)
-    other.instance_variable_set :@changes, @changes.dup
-    super
-  end
-
   def register_as_ruby(register_name)
     register_name = register_name.to_sym
     result = <<EOT
@@ -70,6 +70,11 @@ Fakery.register(#{register_name.inspect}, %{
 #{JSON.pretty_generate(self).gsub(/^/, '  ')}
 })
 EOT
+  end
+
+  def initialize_copy(other)
+    other.instance_variable_set :@changes, @changes.dup
+    super
   end
 
   def new_ostruct_member(name)
@@ -81,11 +86,7 @@ EOT
     name
   end
 
-  def as_json(*)
-    to_hash
-  end
-
-  private def record_change(name, new_value)
+  def record_change(name, new_value)
     old_value = self[name]
     if old_value != new_value
       @changes << Fakery::Change.new(
