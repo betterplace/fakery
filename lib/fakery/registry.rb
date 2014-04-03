@@ -13,7 +13,7 @@ module Fakery::Registry
 
   # Returns true, if there is a fake registered under name +name+.
   def registered?(name)
-    registered_fakes.key?(name.to_sym)
+    name.respond_to?(:to_sym) and registered_fakes.key?(name.to_sym)
   end
 
   # Registers +fake+ under name +register_name. (A fake is either a
@@ -45,7 +45,7 @@ module Fakery::Registry
 
   # Returns the ruby source to register +fake+ under the +name+.
   def source(name, fake)
-    fake = Fakery.cast(fake)
+    fake = Fakery::Fake.cast(fake)
     fake.__send__(:register_as_ruby, name)
   end
 end

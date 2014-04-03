@@ -65,4 +65,35 @@ describe Fakery::Fake do
     Fakery.should be_registered :my_name
     Fakery.build(:my_name).name.should eq 'foo'
   end
+
+  context 'casting' do
+    it 'casts to itself' do
+      casted = Fakery::Fake.cast(fake)
+      casted.should be_a Fakery::Fake
+      casted.name.should eq 'foo'
+    end
+
+    it 'casts from a name to a registered fake' do
+      Fakery.register(:foo, fake)
+      casted = Fakery::Fake.cast(:foo)
+      casted.should be_a Fakery::Fake
+      casted.name.should eq 'foo'
+    end
+
+    it 'casts from a hash to a fake' do
+      casted = Fakery::Fake.cast(name: 'foo')
+      casted.should be_a Fakery::Fake
+      casted.name.should eq 'foo'
+    end
+
+    it 'casts from a json text to a fake' do
+      casted = Fakery::Fake.cast('{ "name": "foo" }')
+      casted.should be_a Fakery::Fake
+      casted.name.should eq 'foo'
+    end
+
+    it 'raises an ArgumentError if it cannot cast' do
+      expect { Fakery::Fake.cast(Object.new) }.to raise_error ArgumentError
+    end
+  end
 end

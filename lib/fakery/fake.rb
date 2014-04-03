@@ -4,6 +4,21 @@ class Fakery::Fake < JSON::GenericObject
     thread_local :ignore_changesp
     extend Tins::Delegate
 
+    def cast(fake)
+      case
+      when self === fake
+        fake
+      when Fakery.registered?(fake)
+        Fakery.build(fake)
+      when fake.respond_to?(:to_hash)
+        from_hash(fake.to_hash)
+      when fake.respond_to?(:to_str)
+        from_json(fake.to_str)
+      else
+        raise ArgumentError, "cannot cast #{fake.inspect}"
+      end
+    end
+
     def ignore_changes?
       ignore_changesp
     end
