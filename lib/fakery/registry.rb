@@ -1,9 +1,10 @@
 module Fakery::Registry
   module_function
 
-  private def registered_fakes
+  def registered_fakes
     @registered_fakes ||= {}
   end
+  private :registered_fakes
 
   # Clear all registered fakes.
   def clear

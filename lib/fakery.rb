@@ -19,7 +19,16 @@ module Fakery
     extend Forwardable
 
     def cast(fake)
-      Fakery::Fake === fake ? fake : build(fake)
+      case
+      when Fakery::Fake === fake
+        fake
+      when registered?(fake)
+        build(fake)
+      when Hash === fake
+        Fake.from_hash(fake)
+      else
+        Fake.from_json(fake)
+      end
     end
 
     def_delegators :'Fakery::Registry', :register, :registered?, :build,

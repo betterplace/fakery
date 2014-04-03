@@ -3,7 +3,8 @@ class Fakery::Change
   # which the field was changed. +to+ is the new value to which the field was
   # changed. If +added+ is false (default) this is a change from previously set
   # value, if it's true then this change is a new addition of a field.
-  def initialize(name:, from:, to:, added: false)
+  def initialize(name: nil, from: nil, to: nil, added: false) # TODO remove nil in Ruby 2.1
+    name or raise ArgumentError, 'name keyword argument is required'
     @name, @from, @to, @added = name, from, to, added
   end
 
