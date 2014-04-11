@@ -13,7 +13,7 @@ module Fakery::Registry
 
   # Returns true, if there is a fake registered under name +name+.
   def registered?(name)
-    name.respond_to?(:to_sym) and registered_fakes.key?(name.to_sym)
+    name.respond_to?(:to_sym) && registered_fakes.key?(name.to_sym)
   end
 
   # Registers +fake+ under name +register_name. (A fake is either a
