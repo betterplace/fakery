@@ -8,6 +8,8 @@ class Fakery::Fake < JSON::GenericObject
         fake
       when Fakery.registered?(fake)
         Fakery.build(fake)
+      when fake.respond_to?(:as_json)
+        from_hash(fake.as_json)
       when fake.respond_to?(:to_hash)
         from_hash(fake.to_hash)
       when fake.respond_to?(:read)
