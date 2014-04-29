@@ -8,14 +8,14 @@ class Fakery::Fake < JSON::GenericObject
         fake
       when Fakery.registered?(fake)
         Fakery.build(fake)
-      when fake.respond_to?(:as_json)
-        from_hash(fake.as_json)
       when fake.respond_to?(:to_hash)
         from_hash(fake.to_hash)
       when fake.respond_to?(:read)
         cast(fake.read)
       when fake.respond_to?(:to_str)
         from_json(fake.to_str)
+      when fake.respond_to?(:as_json)
+        from_hash(fake.as_json)
       else
         raise ArgumentError, "cannot cast #{fake.inspect}"
       end
