@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<byebug>, ["~> 2.0"])
       s.add_runtime_dependency(%q<tins>, ["~> 1.0"])
       s.add_runtime_dependency(%q<term-ansicolor>, ["~> 1.3"])
-      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.6.0"])
+      s.add_runtime_dependency(%q<typhoeus>, ["~> 0.7"])
       s.add_runtime_dependency(%q<json>, ["~> 1.0"])
     else
       s.add_dependency(%q<gem_hadar>, ["~> 1.0.0"])
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<byebug>, ["~> 2.0"])
       s.add_dependency(%q<tins>, ["~> 1.0"])
       s.add_dependency(%q<term-ansicolor>, ["~> 1.3"])
-      s.add_dependency(%q<typhoeus>, ["~> 0.6.0"])
+      s.add_dependency(%q<typhoeus>, ["~> 0.7"])
       s.add_dependency(%q<json>, ["~> 1.0"])
     end
   else
@@ -54,7 +54,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<byebug>, ["~> 2.0"])
     s.add_dependency(%q<tins>, ["~> 1.0"])
     s.add_dependency(%q<term-ansicolor>, ["~> 1.3"])
-    s.add_dependency(%q<typhoeus>, ["~> 0.6.0"])
+    s.add_dependency(%q<typhoeus>, ["~> 0.7"])
     s.add_dependency(%q<json>, ["~> 1.0"])
   end
 end
