@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["betterplace Developers"]
-  s.date = "2014-04-29"
+  s.date = "2015-06-02"
   s.description = "This library fakes ruby objects from JSON API responses for testing purposes."
   s.email = "developers@betterplace.org"
   s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb"]
