@@ -13,7 +13,7 @@ describe Fakery::Fake do
       obj = Fakery.build(:foo)
       obj.__send__(:changes).should be_empty
       obj.name = 'bar'
-      obj.__send__(:changes).should have(1).entry
+      expect(obj.__send__(:changes).size).to eq 1
       change = obj.__send__(:changes).first
       change.name.should eq :name
       change.from.should eq 'foo'
@@ -25,7 +25,7 @@ describe Fakery::Fake do
       obj = Fakery.build(:foo)
       obj.__send__(:changes).should be_empty
       obj.change = true
-      obj.__send__(:changes).should have(1).entry
+      expect(obj.__send__(:changes).size).to eq 1
       change = obj.__send__(:changes).first
       change.name.should eq :change
       change.from.should be_nil
