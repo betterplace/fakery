@@ -17,13 +17,12 @@ GemHadar do
 
   dependency 'tins',           '~>1.0'
   dependency 'term-ansicolor', '~>1.3'
-  dependency 'typhoeus',       '~>0.7'
+  dependency 'typhoeus',       '~>1.0'
   dependency 'json',           '~>1.0'
-  development_dependency 'simplecov', '~>0.8'
-  development_dependency 'rspec',     '~>2.0'
-  development_dependency 'fuubar',    '~>1.3'
+  development_dependency 'simplecov'
+  development_dependency 'rspec',     '~>3.0'
   development_dependency 'rspec-nc'
-  development_dependency 'byebug',   '~>2.0'
+  development_dependency 'byebug'
 end
 
 task :default => :spec

@@ -11,13 +11,13 @@ describe Fakery::Change do
     end
 
     it 'has nice string representations' do
-      change.to_s.should eq change.inspect
+      expect(change.to_s).to eq change.inspect
     end
 
     it 'supports changes of fields' do
-      change.from.should be_nil
-      change.to.should eq 23
-      change.should_not be_added
+      expect(change.from).to be_nil
+      expect(change.to).to eq 23
+      expect(change).to_not be_added
     end
   end
 
@@ -28,13 +28,13 @@ describe Fakery::Change do
     end
 
     it 'has nice string representations' do
-      change.to_s.should eq change.inspect
+      expect(change.to_s).to eq change.inspect
     end
 
     it 'supports changes of fields' do
-      change.from.should be_nil
-      change.to.should eq 23
-      change.should be_added
+      expect(change.from).to be_nil
+      expect(change.to).to eq 23
+      expect(change).to be_added
     end
   end
 end

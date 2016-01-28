@@ -6,15 +6,15 @@ describe Fakery::Registry do
   end
 
   it 'registers fakes under a name' do
-    Fakery.should_not be_registered 'foo'
-    Fakery.should_not be_registered :foo
+    expect(Fakery).to_not be_registered 'foo'
+    expect(Fakery).to_not be_registered :foo
     Fakery.register 'foo', fake
-    Fakery.should be_registered 'foo'
-    Fakery.should be_registered :foo
+    expect(Fakery).to be_registered 'foo'
+    expect(Fakery).to be_registered :foo
   end
 
   it 'warns iff a fake was registered a second time' do
-    Fakery::Registry.should receive(:warn).with(any_args).and_call_original
+    expect(Fakery::Registry).to receive(:warn).with(any_args).and_call_original
     Fakery.register 'foo', fake
     Fakery.register 'foo', fake
   end
@@ -30,15 +30,15 @@ describe Fakery::Registry do
 
     it 'can be built' do
       foo = Fakery.build(:foo)
-      foo.name.should eq 'foo'
-      foo.bar.should be_nil
+      expect(foo.name).to eq 'foo'
+      expect(foo.bar).to be_nil
     end
 
     it 'can be changed and registered again' do
       foo = Fakery.build(:foo, with: { bar: true })
-      foo.bar.should eq true
+      expect(foo.bar).to eq true
       Fakery.register(:bar, foo)
-      Fakery.build(:bar).bar.should eq true
+      expect(Fakery.build(:bar).bar).to eq true
     end
   end
 end

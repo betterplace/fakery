@@ -14,8 +14,8 @@ describe Fakery::Api do
 
     it 'has a sensible message' do
       e = Fakery::Api.get('http://foo.bar') rescue $!
-      e.message.should match "JSON::ParserError"
-      e.message.should match "unexpected token at '<nix>json</nix>'"
+      expect(e.message).to match "JSON::ParserError"
+      expect(e.message).to match "unexpected token at '<nix>json</nix>'"
     end
   end
 
@@ -24,7 +24,7 @@ describe Fakery::Api do
       response = Typhoeus::Response.new(
         code: 404, body: '{ "dont": "matter" }'
       )
-      response.stub(return_message: 'curl describes the problem a bit more')
+      allow(response).to receive(:return_message).and_return('curl describes the problem a bit more')
       Typhoeus.stub(/.*/).and_return response
     end
 
@@ -35,8 +35,8 @@ describe Fakery::Api do
 
     it 'has a sensible message' do
       e = Fakery::Api.get('http://foo.bar') rescue $!
-      e.message.should match "api responded with http_status=404 "
-      e.message.should match 'curl describes the problem a bit more'
+      expect(e.message).to match "api responded with http_status=404 "
+      expect(e.message).to match 'curl describes the problem a bit more'
     end
   end
 end

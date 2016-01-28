@@ -9,14 +9,14 @@ describe Fakery::Wrapping do
     context Typhoeus do
       it 'returns a successful http response object' do
         response = Fakery.http_response(fake)
-        response.should be_success
-        JSON(response.body)['name'].should eq fake.name
+        expect(response).to be_success
+        expect(JSON(response.body)['name']).to eq fake.name
       end
 
       it 'returns an unsuccessful http response object' do
         response = Fakery.http_response(fake, http_status: 500)
-        response.should_not be_success
-        JSON(response.body)['name'].should eq fake.name
+        expect(response).to_not be_success
+        expect(JSON(response.body)['name']).to eq fake.name
       end
 
       context 'registered' do
@@ -26,7 +26,7 @@ describe Fakery::Wrapping do
 
         it 'returns a http response object' do
           response = Fakery.http_response(:foo)
-          JSON(response.body)['name'].should eq fake.name
+          expect(JSON(response.body)['name']).to eq fake.name
         end
       end
     end
@@ -45,7 +45,7 @@ describe Fakery::Wrapping do
 
     it 'returns an instance' do
       obj = Fakery.instance(fake, as: klass)
-      obj.attrs[:name].should eq fake.name
+      expect(obj.attrs[:name]).to eq fake.name
     end
 
     context 'registered' do
@@ -55,7 +55,7 @@ describe Fakery::Wrapping do
 
       it 'returns an instance' do
         obj = Fakery.instance(:foo, as: klass)
-        obj.attrs[:name].should eq fake.name
+        expect(obj.attrs[:name]).to eq fake.name
       end
     end
   end
