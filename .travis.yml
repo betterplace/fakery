@@ -11,3 +11,5 @@ env:
 
 before_install:
     - gem install bundler
+
+sudo: false
