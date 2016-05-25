@@ -4,14 +4,7 @@ if ENV['START_SIMPLECOV'].to_i == 1
   SimpleCov.start do
     add_filter "#{File.basename(File.dirname(__FILE__))}/"
   end
-end
-if ENV['CODECLIMATE_REPO_TOKEN']
-  if ENV['START_SIMPLECOV']
-    SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-      SimpleCov::Formatter::HTMLFormatter,
-      CodeClimate::TestReporter::Formatter
-    ]
-  end
+elsif ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start
 end
 require 'rspec'
