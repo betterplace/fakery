@@ -70,7 +70,7 @@ class Fakery::Fake < JSON::GenericObject
 
   def register_as_ruby(register_name)
     register_name = register_name.to_sym
-    result = <<EOT
+    <<EOT
 Fakery.register(#{register_name.inspect}, %{
 #{JSON.pretty_generate(self).gsub(/^/, '  ')}
 })
