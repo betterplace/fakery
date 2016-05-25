@@ -91,6 +91,13 @@ describe Fakery::Fake do
       expect(fake.name).to eq 'foo'
     end
 
+    it 'casts from an object implementing as_json method' do
+      object = double(as_json: { name: 'foo' })
+      casted = Fakery::Fake.cast(object)
+      expect(casted).to be_a Fakery::Fake
+      expect(casted.name).to eq 'foo'
+    end
+
     it 'raises an ArgumentError if it cannot cast' do
       expect { Fakery::Fake.cast(Object.new) }.to raise_error ArgumentError
     end
