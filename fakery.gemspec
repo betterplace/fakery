@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["betterplace Developers"]
-  s.date = "2016-01-28"
+  s.date = "2016-05-25"
   s.description = "This library fakes ruby objects from JSON API responses for testing purposes."
   s.email = "developers@betterplace.org"
   s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb"]
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<gem_hadar>, ["~> 1.3.1"])
+      s.add_development_dependency(%q<gem_hadar>, ["~> 1.7.1"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 3.0"])
       s.add_development_dependency(%q<rspec-nc>, [">= 0"])
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<typhoeus>, ["~> 1.0"])
       s.add_runtime_dependency(%q<json>, ["~> 1.0"])
     else
-      s.add_dependency(%q<gem_hadar>, ["~> 1.3.1"])
+      s.add_dependency(%q<gem_hadar>, ["~> 1.7.1"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 3.0"])
       s.add_dependency(%q<rspec-nc>, [">= 0"])
@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<json>, ["~> 1.0"])
     end
   else
-    s.add_dependency(%q<gem_hadar>, ["~> 1.3.1"])
+    s.add_dependency(%q<gem_hadar>, ["~> 1.7.1"])
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 3.0"])
     s.add_dependency(%q<rspec-nc>, [">= 0"])
