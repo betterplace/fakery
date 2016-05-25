@@ -8,3 +8,6 @@ matrix:
     - rvm: ruby-head
 env:
   - START_SIMPLECOV=1 CODECLIMATE_REPO_TOKEN=af3a05003c763bcee8abfdd7d7c46cc122c02ea09e5a71c3e16cf0a26685a851
+
+before_install:
+    - gem install bundler
