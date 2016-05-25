@@ -28,6 +28,17 @@ module Fakery::Registry
     registered_fakes[register_name] = Fakery::Fake.cast(fake)
   end
 
+  def register_files(*files)
+    files = files.flatten
+    puts "Registering fakes…"
+    for file in files
+      name = File.basename(file).sub('.json', '').to_sym
+      Fakery.register(name, File.read(file))
+      puts "Just registered the fake #{name.inspect}"
+    end
+    puts "Done."
+  end
+
   # Builds a the fake registered under the name +register_name+. All its fields
   # can be changed according to the names and values in the +with+ keyword
   # argument or later by using setters on the object.

@@ -20,7 +20,7 @@ module Fakery
     extend Forwardable
 
     def_delegators :'Fakery::Registry', :register, :registered?, :build,
-      :source
+      :source, :register_files
 
     def_delegators :'Fakery::Seeding', :seed, :reseed
 

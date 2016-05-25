@@ -19,6 +19,12 @@ describe Fakery::Registry do
     Fakery.register 'foo', fake
   end
 
+  it 'can register files containing json as fakes' do
+    expect(File).to receive(:read).with('bar/foo.json').and_return fake.to_json
+    Fakery.register_files 'bar/foo.json'
+    expect(Fakery.build(:foo).name).to eq 'foo'
+  end
+
   context 'registered fake' do
     before :each do
       Fakery.register :foo, fake
