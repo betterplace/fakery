@@ -15,6 +15,7 @@ GemHadar do
     'errors.lst', '.byebug_history'
   readme      'README.md'
   title       "#{name.camelize} -- "
+  licenses    << 'Apache-2.0'
 
   dependency 'tins',           '~>1.0'
   dependency 'term-ansicolor', '~>1.3'

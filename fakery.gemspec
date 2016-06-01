@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: fakery 0.3.0 ruby lib
+# stub: fakery 0.3.1 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "fakery"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb"]
   s.files = [".gitignore", ".rspec", ".travis.yml", "Gemfile", "LICENSE", "README.md", "Rakefile", "TODO.md", "VERSION", "fakery.gemspec", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb", "spec/api_spec.rb", "spec/change_spec.rb", "spec/fake_spec.rb", "spec/registry_spec.rb", "spec/seeding_spec.rb", "spec/spec_helper.rb", "spec/wrapping_spec.rb"]
   s.homepage = "http://github.com/betterplace/fakery"
+  s.licenses = ["Apache-2.0"]
   s.rdoc_options = ["--title", "Fakery -- ", "--main", "README.md"]
   s.rubygems_version = "2.5.1"
   s.summary = "Fake Ruby objects from JSON API responses"
