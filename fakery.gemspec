@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: fakery 0.2.0 ruby lib
+# stub: fakery 0.3.0 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "fakery"
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["betterplace Developers"]
-  s.date = "2016-05-25"
+  s.date = "2016-06-01"
   s.description = "This library fakes ruby objects from JSON API responses for testing purposes."
   s.email = "developers@betterplace.org"
   s.extra_rdoc_files = ["README.md", "lib/fakery.rb", "lib/fakery/api.rb", "lib/fakery/api_error.rb", "lib/fakery/change.rb", "lib/fakery/fake.rb", "lib/fakery/fakery_error.rb", "lib/fakery/registry.rb", "lib/fakery/seeding.rb", "lib/fakery/version.rb", "lib/fakery/wrapping.rb"]

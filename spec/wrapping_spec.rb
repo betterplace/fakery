@@ -57,6 +57,11 @@ describe Fakery::Wrapping do
         obj = Fakery.instance(:foo, as: klass)
         expect(obj.attrs[:name]).to eq fake.name
       end
+
+      it 'returns a modified instance' do
+        obj = Fakery.instance(:foo, as: klass, with: { name: 'bar' })
+        expect(obj.attrs[:name]).to eq 'bar'
+      end
     end
   end
 end
