@@ -3,9 +3,13 @@ rvm:
   - 2.2
   - 2.3.1
   - ruby-head
+  - jruby-head
 matrix:
   allow_failures:
     - rvm: ruby-head
+  include:
+    - rvm: jruby-head
+      env: JRUBY_OPTS="--2.1"
 env:
   - CODECLIMATE_REPO_TOKEN=af3a05003c763bcee8abfdd7d7c46cc122c02ea09e5a71c3e16cf0a26685a851
 

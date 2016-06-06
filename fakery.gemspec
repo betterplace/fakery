@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: fakery 0.4.0 ruby lib
+# stub: fakery 0.4.1 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "fakery"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/betterplace/fakery"
   s.licenses = ["Apache-2.0"]
   s.rdoc_options = ["--title", "Fakery -- ", "--main", "README.md"]
-  s.rubygems_version = "2.5.1"
+  s.required_ruby_version = Gem::Requirement.new("~> 2.1")
+  s.rubygems_version = "2.4.8"
   s.summary = "Fake Ruby objects from JSON API responses"
   s.test_files = ["spec/api_spec.rb", "spec/change_spec.rb", "spec/fake_spec.rb", "spec/registry_spec.rb", "spec/seeding_spec.rb", "spec/spec_helper.rb", "spec/wrapping_spec.rb"]
 
@@ -28,7 +29,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 3.0"])
       s.add_development_dependency(%q<rspec-nc>, [">= 0"])
-      s.add_development_dependency(%q<byebug>, [">= 0"])
       s.add_runtime_dependency(%q<tins>, ["~> 1.0"])
       s.add_runtime_dependency(%q<term-ansicolor>, ["~> 1.3"])
       s.add_runtime_dependency(%q<typhoeus>, ["~> 1.0"])
@@ -38,7 +38,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 3.0"])
       s.add_dependency(%q<rspec-nc>, [">= 0"])
-      s.add_dependency(%q<byebug>, [">= 0"])
       s.add_dependency(%q<tins>, ["~> 1.0"])
       s.add_dependency(%q<term-ansicolor>, ["~> 1.3"])
       s.add_dependency(%q<typhoeus>, ["~> 1.0"])
@@ -49,7 +48,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 3.0"])
     s.add_dependency(%q<rspec-nc>, [">= 0"])
-    s.add_dependency(%q<byebug>, [">= 0"])
     s.add_dependency(%q<tins>, ["~> 1.0"])
     s.add_dependency(%q<term-ansicolor>, ["~> 1.3"])
     s.add_dependency(%q<typhoeus>, ["~> 1.0"])

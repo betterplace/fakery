@@ -16,6 +16,7 @@ GemHadar do
   readme      'README.md'
   title       "#{name.camelize} -- "
   licenses    << 'Apache-2.0'
+  required_ruby_version '~>2.1'
 
   dependency 'tins',           '~>1.0'
   dependency 'term-ansicolor', '~>1.3'
@@ -24,7 +25,6 @@ GemHadar do
   development_dependency 'simplecov'
   development_dependency 'rspec',     '~>3.0'
   development_dependency 'rspec-nc'
-  development_dependency 'byebug'
 end
 
 task :default => :spec

@@ -9,7 +9,11 @@ elsif ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start
 end
 require 'rspec'
-require 'byebug'
+begin
+  require 'byebug'
+rescue LoadError
+  warn "Cannot load byebug => Skipping it."
+end
 require 'fakery'
 
 RSpec.configure do |config|
