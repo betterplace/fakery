@@ -49,15 +49,6 @@ describe Fakery::Fake do
     expect(fake.name).to eq 'foo'
   end
 
-  it 'can output ruby code for registration in the Fake::Registry' do
-    string = Fakery.source(:my_name, fake)
-    expect(string).to be_a String
-    expect(Fakery).to_not be_registered :my_name
-    eval(string)
-    expect(Fakery).to be_registered :my_name
-    expect(Fakery.build(:my_name).name).to eq 'foo'
-  end
-
   context 'casting' do
     it 'casts to itself' do
       casted = Fakery::Fake.cast(fake)
@@ -66,7 +57,6 @@ describe Fakery::Fake do
     end
 
     it 'casts from a name to a registered fake' do
-      Fakery.register(:foo, fake)
       casted = Fakery::Fake.cast(:foo)
       expect(casted).to be_a Fakery::Fake
       expect(casted.name).to eq 'foo'

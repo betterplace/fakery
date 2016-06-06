@@ -3,7 +3,7 @@ module Fakery::Api
 
   # Get a http response from +url+ with parameters +params+.
   def get_response(url, params: {})
-    Typhoeus.get(url, params: params)
+    Typhoeus.get(url, params: params, followlocation: true)
   end
 
   # Get the +url+ and parse the response body into a Fakery::Fake object. If

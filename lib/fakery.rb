@@ -9,6 +9,7 @@ module Fakery
   require 'fakery/version'
   require 'fakery/fakery_error'
   require 'fakery/api_error'
+  require 'fakery/state_error'
   require 'fakery/api'
   require 'fakery/change'
   require 'fakery/fake'
@@ -19,8 +20,7 @@ module Fakery
   class << self
     extend Forwardable
 
-    def_delegators :'Fakery::Registry', :register, :registered?, :build,
-      :source, :register_files
+    def_delegators :'Fakery::Registry', :register, :registered?, :build, :register_files
 
     def_delegators :'Fakery::Seeding', :seed, :reseed
 

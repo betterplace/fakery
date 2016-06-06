@@ -6,6 +6,10 @@ module Fakery::Registry
   end
   private :registered_fakes
 
+  def list
+    registered_fakes.keys
+  end
+
   # Clear all registered fakes.
   def clear
     registered_fakes.clear
@@ -28,6 +32,7 @@ module Fakery::Registry
     registered_fakes[register_name] = Fakery::Fake.cast(fake)
   end
 
+  # Register all +files+ as fakes with their filename as their name.
   def register_files(*files)
     files = files.flatten
     puts "Registering fakes…"
@@ -51,11 +56,5 @@ module Fakery::Registry
     fake
   rescue KeyError
     raise ArgumentError, "no fake registered under the name #{register_name.inspect}"
-  end
-
-  # Returns the ruby source to register +fake+ under the +name+.
-  def source(name, fake)
-    fake = Fakery::Fake.cast(fake)
-    fake.__send__(:register_as_ruby, name)
   end
 end

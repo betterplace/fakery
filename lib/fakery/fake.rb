@@ -58,6 +58,8 @@ class Fakery::Fake < JSON::GenericObject
   end
 
   def reseed
+    __api_seed_url__.nil? and raise Fakery::StateError,
+      'reseeding not possible, this fake was not originally seeded'
     myself = self
     self.class.from_hash(Fakery::Api.get(__api_seed_url__)).instance_eval do
       self.__api_seed_url__ = myself.__api_seed_url__
@@ -66,15 +68,6 @@ class Fakery::Fake < JSON::GenericObject
       end
     end
     myself
-  end
-
-  def register_as_ruby(register_name)
-    register_name = register_name.to_sym
-    <<EOT
-Fakery.register(#{register_name.inspect}, %{
-#{JSON.pretty_generate(self).gsub(/^/, '  ')}
-})
-EOT
   end
 
   def initialize_copy(other)

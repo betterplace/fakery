@@ -14,7 +14,7 @@ describe Fakery::Registry do
   end
 
   it 'warns iff a fake was registered a second time' do
-    expect(Fakery::Registry).to receive(:warn).with(any_args).and_call_original
+    expect(Fakery::Registry).to receive(:warn).with(any_args)
     Fakery.register 'foo', fake
     Fakery.register 'foo', fake
   end
@@ -45,6 +45,10 @@ describe Fakery::Registry do
       expect(foo.bar).to eq true
       Fakery.register(:bar, foo)
       expect(Fakery.build(:bar).bar).to eq true
+    end
+
+    it 'can be listed' do
+      expect(Fakery::Registry.list).to eq %i[ foo ]
     end
   end
 end
