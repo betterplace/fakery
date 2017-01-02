@@ -21,7 +21,7 @@ GemHadar do
   dependency 'tins',           '~>1.0'
   dependency 'term-ansicolor', '~>1.3'
   dependency 'typhoeus',       '~>1.0'
-  dependency 'json',           '~>1.0'
+  dependency 'json',           '>=1.0', '<3'
   development_dependency 'simplecov'
   development_dependency 'rspec',     '~>3.0'
   development_dependency 'rspec-nc'
