@@ -91,7 +91,7 @@ class Fakery::Fake < JSON::GenericObject
       name  = $`.to_sym
       value = args.first
       self.class.ignore_changes? or record_change(name, value)
-      modifiable[name] = value
+      self[name] = value
     else
       super
     end
